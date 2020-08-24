@@ -17,4 +17,15 @@ class Potluck
       dish.category == category
     end
   end
+
+  def ratio(category)
+    (get_all_from_category(category).count.to_f / @dishes.count.to_f).round(4) * 100
+  end
+
+  def menu
+    @dishes.group_by do |dish|
+      dish.category
+    end
+  end
+
 end
